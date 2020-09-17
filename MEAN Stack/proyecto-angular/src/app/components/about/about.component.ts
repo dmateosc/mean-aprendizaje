@@ -8,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class AboutComponent implements OnInit {
   public title: string;
   public subtitle : string;
-  public email : string;
+  public web : string;
 
   constructor() { 
     this.title = "David Mateos";
     this.subtitle = "Desarrollador web full stack";
-    this.email = "mateoscano.david@gmail.com";
+    this.web = "http://davidm.com";
 
   }
 
