@@ -17,7 +17,7 @@ export class ProjectService{
 
 
     testService(){
-        return 'Probando el servicio de angular';
+        return 'Probando el servicio de angular nuevo';
     }
 
     saveProject(project:Project): Observable<any>{
