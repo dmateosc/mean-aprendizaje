@@ -1,0 +1,16 @@
+.altoPrecio{
+    color: gray !important;
+    font-size: 18px !important;
+}
+
+.fondoRojo{
+    background: red;
+}
+
+.subrayado{
+    text-decoration: underline;;
+}
+
+.active{
+    color: gray;
+}

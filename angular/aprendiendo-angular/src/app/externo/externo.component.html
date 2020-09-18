@@ -1,0 +1,38 @@
+{{ 4 | calculadora : 2}}
+<input type="text" [(ngModel)]="userId" (keyup.enter)="cargaUsuario()">
+
+<div *ngIf="!user">
+    Cargando...
+
+</div>
+
+<div *ngIf="user">
+    
+    <p>externo works! {{user.first_name +' '+user.last_name | uppercase}} </p>
+    <p>And my Birthday is {{fecha | date:'yyyy-MM-dd'}}</p>
+    <img src="{{user.avatar}}" alt="avatar">
+
+
+</div>
+
+<hr>
+
+<form #newUser="ngForm" (ngSubmit)="onSubmit(newUser)">
+
+
+    <p>
+        <label for="name">Nombre</label>
+        <input type="text" name="name" #name="ngModel" [(ngModel)]="newUsers.name" required>
+        <label for="job">Trabajo</label>
+        <input type="text" name="job" #job="ngModel" [(ngModel)]="newUsers.job" required>
+    </p>
+
+    <input type="submit" value="Guardar Usuario" [disabled]="!newUser.form.valid">
+
+
+
+</form>
+
+
+<div><h3 *ngIf="usuarioRegistrado">{{usuarioRegistrado}}</h3></div>
+
