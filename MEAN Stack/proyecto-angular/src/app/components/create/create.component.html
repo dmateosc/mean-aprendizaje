@@ -24,12 +24,12 @@
         </p>
 
         <p>
-            <label for="langs">Año de lanzamiento</label>
+            <label for="langs">Lenguajes</label>
             <input type="text" name="langs" #langs="ngModel" [(ngModel)]="project.langs">
         </p>
         <p>
             <label for="image">Imagen del proyecto</label>
-            <input type="file" placeholder="Subir imagen" name="image" (change)="fileChangeEvent($event)">
+            <input type="file" placeholder="Subir imagen" name="image"  (change)="fileChangeEvent($event)">
         </p>
 
 

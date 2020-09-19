@@ -20,7 +20,6 @@ var controller = {
 
 	saveProject: function(req, res){
 		var project = new Project();
-
 		var params = req.body;
 		project.name = params.name;
 		project.description = params.description;
@@ -102,9 +101,9 @@ var controller = {
 	uploadImage: function(req, res){
 		var projectId = req.params.id;
 		var fileName = 'Imagen no subida...';
-
-		if(req.files){
-			var filePath = req.files.image.path;
+		console.log(req.file);
+		if(req.file){
+			var filePath = req.file.path;
 			var fileSplit = filePath.split('\\');
 			var fileName = fileSplit[1];
 			var extSplit = fileName.split('\.');
@@ -140,7 +139,8 @@ var controller = {
 		var file = req.params.image;
 		var path_file = './uploads/'+file;
 
-		fs.exists(path_file, (exists) => {
+		
+		fs.stat(path_file, (exists) => {
 			if(exists){
 				return res.sendFile(path.resolve(path_file));
 			}else{

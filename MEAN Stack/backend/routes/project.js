@@ -5,8 +5,18 @@ var ProjectController = require('../controllers/project');
 
 var router = express.Router();
 
-var multipart = require('connect-multiparty');
-var multipartMiddleware = multipart({ uploadDir: './uploads' });
+var multer = require('multer');
+
+//definir donde vamos a guardar y el nombre del fichero que subimos, sino le pone uno por defecto
+var storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null,'./uploads')
+    },
+    filename: function(req,file,cb){
+        cb(null, file.originalname)
+    }
+})
+var multipartMiddleware = multer({ storage: storage }); 
 
 router.get('/home', ProjectController.home);
 router.post('/test', ProjectController.test);
@@ -15,7 +25,7 @@ router.get('/project/:id?', ProjectController.getProject);
 router.get('/projects', ProjectController.getProjects);
 router.put('/project/:id', ProjectController.updateProject);
 router.delete('/project/:id', ProjectController.deleteProject);
-router.post('/upload-image/:id', multipartMiddleware, ProjectController.uploadImage);
+router.post('/upload-image/:id', multipartMiddleware.single('image'), ProjectController.uploadImage);
 router.get('/get-image/:image', ProjectController.getImageFile);
 
 module.exports = router;

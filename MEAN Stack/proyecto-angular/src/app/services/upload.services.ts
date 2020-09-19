@@ -9,13 +9,31 @@ import {Global} from './global';
 export class UploadService{
 
     public url: string;
+   
 
-    constructor(){
+    constructor(
+
+        private _http: HttpClient
+
+    ){
         this.url = Global.url;
     }
 
     makeFileRequest(url: string, params: Array<string>, file: Array<File>, name: string){
-        return new Promise(function(resolve, reject){
+
+        //importante ponerle esto a los headers
+        let headers = new HttpHeaders().set('enctype','multipart/form-data');
+        //Alternativa
+         var formData:any = new FormData();
+        for(var i = 0; i<file.length; i++){
+            formData.append(name, file[i],file[i].name);
+        }
+        for (var p of formData){
+            console.log(p);
+        }
+        return this._http.post(url,formData,{headers:headers}); 
+       
+      /*   return new Promise(function(resolve, reject){
 
             var formData:any = new FormData();
             var xhr = new XMLHttpRequest();
@@ -37,7 +55,7 @@ export class UploadService{
 
             }
 
-        })
+        }) */
     }
 
 }
