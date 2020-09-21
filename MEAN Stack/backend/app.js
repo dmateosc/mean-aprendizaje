@@ -22,8 +22,15 @@ app.use(bodyParser.json());
     next();
     console.log(res);
 }); */
+//guardamos los cors que vamos a usar 
+var corsOptions = {
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+  }
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 // rutas
 app.use('/api', project_routes);

@@ -138,9 +138,10 @@ var controller = {
 	getImageFile: function(req, res){
 		var file = req.params.image;
 		var path_file = './uploads/'+file;
-
 		
-		fs.stat(path_file, (exists) => {
+		
+		//se usa exists aunque este deprecated
+		fs.exists(path_file, (exists) => {
 			if(exists){
 				return res.sendFile(path.resolve(path_file));
 			}else{
