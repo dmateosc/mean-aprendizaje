@@ -1,11 +1,10 @@
-<h1>Proyecto Angular Prueba</h1>
 <header>
   <ul>
     <li><a [routerLink]="['/sobre-mi']" [routerLinkActive]="['actived']">Sobre mi</a></li>
-    <li><a [routerLink]="['/contacto']" [routerLinkActive]="['actived']">Contacto</a></li>
-    <li id="logo"><a href="#">DM</a></li>
-    <li><a [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']">Crear Proyecto</a></li>
     <li><a [routerLink]="['/proyectos']" [routerLinkActive]="['actived']">Proyectos</a></li>
+    <li id="logo"><a href="#">VR</a></li>
+    <li><a [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']">Crear proyecto</a></li>
+    <li><a [routerLink]="['/contacto']" [routerLinkActive]="['actived']">Contacto</a></li>
   </ul>
 </header>
 
@@ -13,5 +12,7 @@
   <router-outlet></router-outlet>
 </section>
 
-<footer>Pie de página del portfolio</footer>
+<footer>
+  Master en JavaScript de victorroblesweb.es &copy;
+</footer>
 
