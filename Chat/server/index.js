@@ -5,7 +5,13 @@ var app = express();
 var server = require('http').Server(app);
 
 //Permitirá la escucha por puertos
-var socket = require('socket.io')(server);
+var io = require('socket.io')(server);
+
+app.use(express.static('client'));
+
+io.on('connection', (socket) => {
+    console.log("Me he conectado"+socket.handshake.address);
+});
 
 app.get('/hola-mundo',(req, res)=>{
     
